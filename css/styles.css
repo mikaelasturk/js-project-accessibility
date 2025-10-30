@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /* THEMES */
+
+  --bg-color: #FCEDC3;
+  --text-color: #D7714D;
+  --secondary-color: #2F828C;
+
+  --wrapper-margin: 40px auto;
+  --wrapper-max-width: 295px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+}
