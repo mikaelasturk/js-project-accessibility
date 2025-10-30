@@ -17,3 +17,20 @@
   list-style-type: none;
   box-sizing: border-box;
 }
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  background: var(--button-bg-color);
+  color: var(--secondary-text-color);
+  padding: 16px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
