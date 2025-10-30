@@ -17,3 +17,17 @@
   list-style-type: none;
   box-sizing: border-box;
 }
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.about-image {
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+  margin: var(--wrapper-margin)  
+}
