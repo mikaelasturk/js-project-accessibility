@@ -1,3 +1,6 @@
+Deployed project: 
+https://group-5-js-project-accessibility.netlify.app/
+
 # Web Accessibility Project
 
 A basic web server template focused on web accessibility practices.
