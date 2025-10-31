@@ -3,20 +3,173 @@
 :root {
   /* THEMES */
 
-  --bg-color: #FCEDC3;
-  --text-color: #D7714D;
-  --secondary-color: #2F828C;
+	/* Comments
+	- kolla kommentarer tillsammans
+	- ska vi ha en hovereffekt på knapparna? color-palette till det
+	- add media quaries (stavning?) later
+	-last child på vad?
 
-  --wrapper-margin: 40px auto;
-  --wrapper-max-width: 295px;
+	*/
+
+  --bg-color: #FCEDC3;
+  --heading-color: #D7714D;
+  --card-bg-color: #f8f6f0; /*bestäm tillsammans*/
+  --button-bg-color: #2F828C;
+  --text-color: #aa2216; /*fråga om ok*/
+	--secondary-text-color:#f8f6f0; /*bestäm tillsammans*/
+	--button-hover-bg-color: #aa2216;
+	--button-hover-text-color: #f8f6f0;
+	--focus-outline-color: #133b3f;
+	--focus-outline: 3px solid var(--focus-outline-color);
+
+	--font:'Montserrat', sans-serif, Arial;
+	--h2-font-size: 140%;
+	--h2-font-weight: bold;
+
+	--button-padding: 10px 10px;
+	--button-border-radius: 50px;
+	--button-border: none;
+
+	--card-border-radius: ;
+
+  --margin: 10px auto;
+  --max-width: 300px;
 }
 
+/*
 * {
   margin: 0;
   padding: 0;
   list-style-type: none;
   box-sizing: border-box;
+}*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ */
+
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+  list-style: none;
+  box-sizing: border-box;
+	font-weight: normal;
+	vertical-align: baseline;
+	line-height: 1.2;
+	font-family: var(--font);
 }
+
+body {
+background-color: var(--bg-color);
+color: var(--text-color);
+}
+
+:focus{
+outline: none;
+}
+
+.tab-user :focus-visible { /*Viktigt med mellanslaget: förkl. från Gepete: Med mellanslag säger jag "alla element inuti ska få detta"*/
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/*Från Gepete: Här säger vi, elementet innan det som har fokus får CSSen"*/
+.tab-user label:has(+ :focus-visible) {
+  font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.tab-user input[type="radio"]:focus-visible + label {
+  font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.tab-user button:focus-visible {
+  font-weight: bold;		
+}
+
+main {
+margin: 20px;
+/*max-width: var(--max-width);*/
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+h2 {
+	color: var(--heading-color);
+	font-size: var(--h2-font-size);
+	font-weight: var(--h2-font-weight);
+	display: flex;
+	justify-content: center;
+	margin-bottom: 16px;
+}
+
+.card {
+background-color: var(--card-bg-color);
+margin: var(--margin);
+padding: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+border-radius: 8px;
+max-width: 560px;
+}
+
+fieldset{
+	padding: 8px;
+}
+
+.all-alternatives {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+input{
+	margin-bottom: 8px;
+	padding: 4px;
+}
+
+button {
+	background-color: var(--button-bg-color);
+	color: var(--bg-color); /*inte bra färg*/
+	color: var(--secondary-text-color);
+	padding: var(--button-padding);
+	border-radius: var(--button-border-radius);
+	border: var(--button-border);
+	margin: 16px 40px 0px;
+}
+
+
+button:hover{
+	background-color: var(--button-hover-bg-color);
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ? remember to define focus styles!
+:focus {
+	outline: 0;
+}*/
+
+/* ? remember to highlight inserts somehow!
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}*/
+
+/* ?tables still need 'cellspacing="0"' in the markup
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}*/
+
 
 .skip-link {
   position: absolute;
