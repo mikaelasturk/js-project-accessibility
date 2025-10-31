@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   /* THEMES */
 
-  --bg-color: #FCEDC3;
-  --text-color: #D7714D;
-  --secondary-color: #2F828C;
+  --bg-color: #fcedc3;
+  --text-color: #d7714d;
+  --secondary-color: #2f828c;
 
   --wrapper-margin: 40px auto;
   --wrapper-max-width: 295px;
@@ -16,4 +16,105 @@
   padding: 0;
   list-style-type: none;
   box-sizing: border-box;
+}
+/* change header color */
+header {
+  background-color: #262626;
+}
+/* for the list we do list-style none */
+li {
+  list-style: none;
+}
+
+/* no underline */
+a {
+  color: white;
+  text-decoration: none;
+}
+/* we decide the min height and flex for aligning it horizontal  */
+.nav-bar {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+/* turning nav-menu into flexbox for better controll aligment */
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+/* make the brand/logo bigger */
+.nav-branding {
+  font-size: 2rem;
+}
+
+/* For the hover effect */
+
+.nav-links {
+  transition: 0.7s ease;
+}
+/* when we hover chanage color */
+.nav-links:hover {
+  color: dodgerblue;
+}
+/* we dont want hamburger to display */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+/* creat little bars that make up the hamburger menu, diplay block for stacking on top of each other */
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
+/* adding media query at 768px when to show Hamburger menu, at this point we want to display, so we use display: block */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  /* we need to creat animation for menu to turn to an X. activate in js */
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
+  .nav-menu {
+    position: fixed;
+    /* hide it from our view */
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    /* the link in the menu appear in a column */
+    flex-direction: column;
+    background-color: #262626;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+  /* we dont want liks of our menu close to each other */
+  .nav-item {
+    margin: 16px 0;
+  }
+  /* When we active the menu class we want to display menu, we activate with javascript */
+  .nav-menu.active {
+    left: 0;
+  }
 }
