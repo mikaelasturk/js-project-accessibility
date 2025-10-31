@@ -36,16 +36,7 @@
   --max-width: 300px;
 }
 
-/*
-* {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  box-sizing: border-box;
-}*/
-
 /* http://meyerweb.com/eric/tools/css/reset/ */
-
 * {
 	margin: 0;
 	padding: 0;
@@ -201,19 +192,30 @@ table {
   top: 0;
   outline: var(--focus-outline);
   outline-offset: 2px;
-footer {
+}
+
+footer, header, a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--text-color);
+  background-color: var(--heading-color);
   color: var(--bg-color);
+}
+
+header a{
+margin: 10px;
+text-decoration: none;
+}
+
+header a:hover {
+	text-decoration: underline;
 }
 
 footer p {
   margin-bottom: 20px;
 }
 
-.social-icons {
+.social-icons, .link {
   display: flex;
   flex-direction: row;
   gap: 20px;
