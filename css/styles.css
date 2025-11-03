@@ -201,6 +201,12 @@ table {
   top: 0;
   outline: var(--focus-outline);
   outline-offset: 2px;
+}
+
+.join-section {
+	text-align: center;
+}
+
 footer {
   display: flex;
   flex-direction: column;
