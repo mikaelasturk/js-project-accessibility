@@ -323,9 +323,11 @@ table {
   outline-offset: 2px;
 }
 
-footer,
-header,
-a {
+.join-section {
+	text-align: center;
+}
+
+footer {
   display: flex;
   flex-direction: column;
   align-items: center;
