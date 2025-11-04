@@ -67,4 +67,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
   something();
   somethingElse();
+
+  // Modal dialog functionality
+
+const dialog = document.getElementById("modal");
+const openDialog = document.querySelectorAll(".modal-button");
+const closeDialog = document.getElementById("close-modal");
+
+openDialog.forEach((button) => {
+  button.addEventListener("click", () => {
+    dialog.showModal();
+    document.body.classList.add("modal-open");
+  });
 });
+
+closeDialog.addEventListener("click", () => {
+  dialog.close();
+  document.body.classList.remove("modal-open");
+});
+
+dialog.addEventListener("click", (e) => {
+  if (e.target === dialog) {
+    dialog.close();
+    document.body.classList.remove("modal-open");
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && dialog.open) {
+    dialog.close();
+    document.body.classList.remove("modal-open");
+  }
+});
+
+});
+  
+form.addEventListener("submit", (e) => {
+    const checkedCount = [...checkboxes].filter((box) => box.checked).length;
+    if (checkedCount < 2) {
+      e.preventDefault();
+      error.textContent = "Please select at least two options.";
+    } else {
+      error.textContent = "";
+    }
+  });
+
