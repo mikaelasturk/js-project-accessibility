@@ -7,9 +7,14 @@
 	- kolla kommentarer tillsammans
 	- ska vi ha en hovereffekt på knapparna? color-palette till det
 	- add media quaries (stavning?) later
-	-last child på vad?
+	- last child på vad?
+  - bestäm färg på link:hover
+  - style the hero section
+  - logo needs to be chanaged
+  
 
 	*/
+
   /* for scrol with nav position absoult */
   scroll-padding-top: 80px;
 
@@ -21,6 +26,8 @@
   --secondary-text-color: #f8f6f0; /*bestäm tillsammans*/
   --button-hover-bg-color: #aa2216;
   --button-hover-text-color: #f8f6f0;
+  --link-bg-color: #fcedc3;
+  --link-hover-color: #000000;
   --focus-outline-color: #133b3f;
   --focus-outline: 3px solid var(--focus-outline-color);
 
@@ -49,15 +56,18 @@
   vertical-align: baseline;
   line-height: 1.2;
   font-family: var(--font);
+  text-decoration: none;
+}
+
+/* Accessibility improvements */
+*:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-}
-
-:focus {
-  outline: none;
 }
 
 .tab-user :focus-visible {
@@ -82,53 +92,34 @@ body {
   font-weight: bold;
 }
 
-header a {
-  margin: 10px;
-  text-decoration: none;
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  background: var(--button-bg-color);
+  color: var(--secondary-text-color);
+  padding: 16px;
+  z-index: 100;
+  transition: top 0.3s;
 }
 
-header a:hover {
-  text-decoration: underline;
+.skip-link:focus {
+  top: 0;
+  outline: var(--focus-outline);
+  outline-offset: 2px;
 }
 
-footer p {
-  margin-bottom: 20px;
-}
-
-.social-icons,
-.link {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-}
-
-.sr-only {
-  display: none;
-}
-/* change header color */
-header {
-  background-color: #262626;
-}
 /* for the list we do list-style none */
 li {
   list-style: none;
 }
 
-/* no underline */
-a {
-  color: white;
-  text-decoration: none;
-}
 .nav-header {
+  background-color: var(--heading-color);
   position: fixed;
   width: 100%;
 }
+
 /* we decide the min height and flex for aligning it horizontal  */
 .nav-bar {
   min-height: 70px;
@@ -137,6 +128,7 @@ a {
   align-items: center;
   padding: 0 24px;
 }
+
 /* turning nav-menu into flexbox for better controll aligment */
 .nav-menu {
   display: flex;
@@ -144,20 +136,27 @@ a {
   align-items: center;
   gap: 60px;
 }
+
 /* make the brand/logo bigger */
 .nav-branding {
   font-size: 2rem;
+  
 }
 
 /* For the hover effect */
 
 .nav-links {
+  color: var(--link-bg-color);
+  text-decoration: none;
   transition: 0.7s ease;
 }
+
 /* when we hover chanage color */
 .nav-links:hover {
-  color: dodgerblue;
+  color: var(--link-hover-color);
+  text-decoration: none;
 }
+
 /* we dont want hamburger to display */
 .hamburger {
   display: none;
@@ -165,61 +164,20 @@ a {
 }
 
 /* creat little bars that make up the hamburger menu, diplay block for stacking on top of each other */
-
 .bar {
   display: block;
   width: 25px;
   height: 3px;
   margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: white;
-}
-
-/* adding media query at 768px when to show Hamburger menu, at this point we want to display, so we use display: block */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-  /* we need to creat animation for menu to turn to an X. activate in js */
-  .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-  /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
-  .nav-menu {
-    position: fixed;
-    /* hide it from our view */
-    left: -100%;
-    top: 70px;
-    gap: 0;
-    /* the link in the menu appear in a column */
-    flex-direction: column;
-    background-color: #262626;
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-  }
-  /* we dont want liks of our menu close to each other */
-  .nav-item {
-    margin: 16px 0;
-  }
-  /* When we active the menu class we want to display menu, we activate with javascript */
-  .nav-menu.active {
-    left: 0;
-  }
+  -webkit-transition: all 0.3s ease-in-out;
+  background-color: var(--link-bg-color)
 }
 
 /* Hero section we create a picture in css, better control, we do flex */
 .hero {
-  background: #f5f5f5 url("../images/books.jpg") center/cover no-repeat;
+  background: #f5f5f5 url("../images/hero-image.png") center/cover no-repeat;
+  
   color: #111; /* ensure text contrast */
   height: 40rem;
 
@@ -232,10 +190,10 @@ a {
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 800px;
 }
 
-hero-title {
+.hero-title {
   font-size: clamp(1.8rem, 5vw, 3rem);
   margin-bottom: 1rem;
 }
@@ -245,7 +203,21 @@ hero-title {
   margin-bottom: 2rem;
 }
 
-.hero-btn {
+/* General button for all */
+button {
+  background-color: var(--button-bg-color);
+  color: var(--bg-color); /*inte bra färg*/
+  color: var(--secondary-text-color);
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  border: var(--button-border);
+  margin: 16px 40px 0px;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+/* .hero-btn {
   padding: 0.75rem 1.5rem;
   border: none;
   background: #192939;
@@ -258,9 +230,9 @@ hero-title {
 .hero-btn:hover {
   font-size: 1rem;
   background: #2d4965;
-}
+} */
 
-/*  */
+/* 
 .visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -271,7 +243,7 @@ hero-title {
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
-}
+} */
 
 main {
   margin: 20px;
@@ -315,58 +287,7 @@ h2 {
   margin: var(--wrapper-margin);
 }
 
-fieldset {
-  padding: 8px;
-}
-
-.all-alternatives {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-input {
-  margin-bottom: 8px;
-  padding: 4px;
-}
-
-button {
-  background-color: var(--button-bg-color);
-  color: var(--bg-color); /*inte bra färg*/
-  color: var(--secondary-text-color);
-  padding: var(--button-padding);
-  border-radius: var(--button-border-radius);
-  border: var(--button-border);
-  margin: 16px 40px 0px;
-}
-
-button:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
-.form-control {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ? remember to define focus styles!
-:focus {
-	outline: 0;
-}*/
-
-/* ? remember to highlight inserts somehow!
-ins {
-	text-decoration: none;
-}
-del {
-	text-decoration: line-through;
-}*/
-
-/* ?tables still need 'cellspacing="0"' in the markup
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}*/
+/* Card-section */
 
 .members-section {
   color: var(--text-color);
@@ -447,32 +368,11 @@ table {
   color: var(--text-color);
 }
 
-/* Accessibility improvements */
-*:focus {
-  outline: 2px solid var(--secondary-color);
-  outline-offset: 2px;
-}
-
-.skip-link {
-  position: absolute;
-  top: -60px;
-  left: 0;
-  background: var(--button-bg-color);
-  color: var(--secondary-text-color);
-  padding: 16px;
-  z-index: 100;
-  transition: top 0.3s;
-}
-
-.skip-link:focus {
-  top: 0;
-  outline: var(--focus-outline);
-  outline-offset: 2px;
-}
-
 .join-section {
   text-align: center;
 }
+
+/* Footer */
 
 footer {
   display: flex;
@@ -500,6 +400,69 @@ footer p {
 
 .sr-only {
   display: none;
+}
+
+
+/* Form */
+fieldset {
+  padding: 8px;
+}
+
+.all-alternatives {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+/* adding media query at 768px when to show Hamburger menu, at this point we want to display, so we use display: block */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  /* we need to creat animation for menu to turn to an X. activate in js */
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
+  .nav-menu {
+    position: fixed;
+    /* hide it from our view */
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    /* the link in the menu appear in a column */
+    flex-direction: column;
+    background-color: #262626;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+  /* we dont want liks of our menu close to each other */
+  .nav-item {
+    margin: 16px 0;
+  }
+  /* When we active the menu class we want to display menu, we activate with javascript */
+  .nav-menu.active {
+    left: 0;
+  }
 }
 
 /* Reduce motion for users with motion sensitivity */

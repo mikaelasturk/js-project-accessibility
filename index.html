@@ -43,20 +43,23 @@
         <h1 id="hero-heading" class="hero-title">Book Club</h1>
         <p class="hero-subtitle">What are your favorite books?</p>
 
-        <!-- Hidden description for screen readers -->
+        <!-- Hidden description for screen readers
         <p id="hero-cta-desc" class="visually-hidden">
           This link takes you to the sign-up form below.
-        </p>
+        </p> -->
 
-        <a class="hero-btn" href="#form" aria-describedby="hero-cta-desc">
-          Join the book club
-        </a>
+        <a href="form.html">
+          <button aria-label="Join the book club">
+            Join the book club!
+          </button>
+        </a>      
+
       </div>
     </section>
 
     <main id="main-content">
       <!-- about section -->
-      <section class="about">
+      <section class="about card">
         <h2 id="about-me">About</h2>
         <img src="./images/sample.png" alt="" class="about-image" />
         <p class="about-text">
@@ -69,7 +72,7 @@
         </p>
       </section>
       <!-- activity section -->
-      <section class="about" id="activity">
+      <section class="about card" id="activity">
         <h2>Activity</h2>
         <img src="./images/sample.png" alt="" class="about-image" />
         <p class="about-text">
@@ -81,25 +84,13 @@
           doloribus ipsum!
         </p>
       </section>
-      <section id="join" class="join-section" aria-labelledby="join-heading">
-        <header>
-          <h2 id="join-heading">Join our cozy circle</h2>
-          <p>
-            Would you like to share stories, meet kind readers, and make every
-            season a little warmer with books?
-          </p>
-        </header>
-        <button class="join-button" aria-label="Join the book club">
-          Join us!
-        </button>
-      </section>
 
-      <section class="members-section" id="member">
+      <section class="members-section card" id="member">
         <h2 class="section-title">Members</h2>
         <p class="section-subtitle">Everyone's favourite book</p>
       </section>
 
-      <section class="members-list">
+      <section class="members-list card">
         <!-- Member 1: Elvis -->
         <article
           class="member-card"
@@ -180,6 +171,21 @@
             </div>
           </header>
         </article>
+      </section>
+
+       <section id="join" class="join-section card" aria-labelledby="join-heading">
+        <header>
+          <h2 id="join-heading">Join our cozy circle</h2>
+          <p>
+            Would you like to share stories, meet kind readers, and make every
+            season a little warmer with books?
+          </p>
+        </header>
+        <a href="form.html">
+          <button aria-label="Join the book club">
+            Join us!
+          </button>
+        </a> 
       </section>
     </main>
     <footer>
