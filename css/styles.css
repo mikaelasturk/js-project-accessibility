@@ -447,24 +447,60 @@ footer p {
 /* Reduce motion for users with motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important; /* shuts down all the animation */
+    animation-iteration-count: 1 !important; /* prevents repeated animations */
+    transition-duration: 0.01ms !important; /* speeds upp the transform effects */
+    scroll-behavior: auto !important; /* scrolling without animation, jumpes straight to the right position */
   }
   
+  .bar { /* removes the animation on the hamburger menu */
+    transition: none !important;
+  }
+
+  .nav-menu {
+    transition: none !important;
+  }
+
   .member-card:hover,
-  .member-card:focus {
+  .member-card:focus { /* removes the transform completely */
     transform: none;
   }
 }
 
-/* High contrast mode support */
+/* High contrast mode support, if the user has a high contrast setting activated */
 @media (prefers-contrast: high) {
+
+   * { /* removes shadows that are hard to see */
+    box-shadow: none !important;
+  }
+
+  body { /* makes the text more bold */
+    font-weight: 600;
+  }
+
+  button { /* increases the contrast between the colors */
+    border: 2px solid black;
+  }
+
+  a { /* more clear links */
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  img { /* a more clear border on pictures */
+    border: 1px solid var(--text-color);
+  }
+
+  .card { /* removes the shadows that are hard to see */
+    box-shadow: none;
+    border: 2px solid currentColor;
+  }
+
   .member-card {
-    border: 2px solid var(--text-color);
+    border: 2px solid var(--text-color); /* visible border */
   }
   
   .member-card:focus {
-    border: 3px solid var(--secondary-color);
+    border: 3px solid var(--secondary-color); /* Even more clear with focus */
   }
 }
