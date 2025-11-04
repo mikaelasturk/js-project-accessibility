@@ -62,12 +62,14 @@ document.querySelectorAll(".nav-links").forEach((n) =>
 // Modal dialog functionality
 
 const dialog = document.getElementById("modal");
-const openDialog = document.getElementById("modal-button");
+const openDialog = document.querySelectorAll(".modal-button");
 const closeDialog = document.getElementById("close-modal");
 
-openDialog.addEventListener("click", () => {
-  dialog.showModal();
-  document.body.classList.add("modal-open");
+openDialog.forEach((button) => {
+  button.addEventListener("click", () => {
+    dialog.showModal();
+    document.body.classList.add("modal-open");
+  });
 });
 
 closeDialog.addEventListener("click", () => {
