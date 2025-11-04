@@ -10,6 +10,8 @@
 	-last child på vad?
 
 	*/
+  /* for scrol with nav position absoult */
+  scroll-padding-top: 80px;
 
   --bg-color: #fcedc3;
   --heading-color: #d7714d;
@@ -123,6 +125,10 @@ a {
   color: white;
   text-decoration: none;
 }
+.nav-header {
+  position: fixed;
+  width: 100%;
+}
 /* we decide the min height and flex for aligning it horizontal  */
 .nav-bar {
   min-height: 70px;
@@ -209,6 +215,62 @@ a {
   .nav-menu.active {
     left: 0;
   }
+}
+
+/* Hero section we create a picture in css, better control, we do flex */
+.hero {
+  background: #f5f5f5 url("../images/books.jpg") center/cover no-repeat;
+  color: #111; /* ensure text contrast */
+  height: 40rem;
+
+  display: flex; /* FLEXBOX */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+hero-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: #192939;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  font-size: 1rem;
+  background: #2d4965;
+}
+
+/*  */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 main {
@@ -311,7 +373,7 @@ table {
   text-align: center;
 }
 
-.members-list{
+.members-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -330,12 +392,12 @@ table {
 }
 
 .member-header {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-.member-card:hover{
+.member-card:hover {
   box-shadow: 0 8px 30px -4px hsl(345, 30%, 15%, 0.15);
   transform: translateY(-4px);
 }
@@ -344,8 +406,7 @@ table {
 .member-card:focus {
   outline: none;
   border: 2px solid var(--secondary-color);
-  box-shadow: 
-    0 8px 30px -4px hsl(345, 30%, 15%, 0.15),
+  box-shadow: 0 8px 30px -4px hsl(345, 30%, 15%, 0.15),
     0 0 0 3px rgba(47, 130, 140, 0.3);
   transform: translateY(-4px);
 }
@@ -358,7 +419,6 @@ table {
 .member-header {
   display: flex;
   align-items: center;
-  
 }
 
 .member-avatar {
@@ -393,7 +453,6 @@ table {
   outline-offset: 2px;
 }
 
-
 .skip-link {
   position: absolute;
   top: -60px;
@@ -412,11 +471,10 @@ table {
 }
 
 .join-section {
-	text-align: center;
+  text-align: center;
 }
 
-
- footer{
+footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -451,7 +509,7 @@ footer p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .member-card:hover,
   .member-card:focus {
     transform: none;
@@ -463,7 +521,7 @@ footer p {
   .member-card {
     border: 2px solid var(--text-color);
   }
-  
+
   .member-card:focus {
     border: 3px solid var(--secondary-color);
   }
