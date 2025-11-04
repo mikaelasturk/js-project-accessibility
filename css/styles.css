@@ -201,6 +201,7 @@ li {
 .hero-subtitle {
   font-size: clamp(1rem, 3vw, 1.5rem);
   margin-bottom: 2rem;
+  color: var(--bg-color);
 }
 
 /* General button for all */
@@ -399,7 +400,15 @@ footer p {
 }
 
 .sr-only {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 
@@ -443,6 +452,7 @@ input {
   }
   /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
   .nav-menu {
+    display: none;
     position: fixed;
     /* hide it from our view */
     left: -100%;
