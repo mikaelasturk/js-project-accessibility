@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // get access to the elements/hamburger and navmenu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
+  const linkButton = document.querySelector(".join-us-button");
+
+  // move to form on button click
+  linkButton.addEventListener("click", () => {
+    window.location.href = "form.html";
+  });
 
   // toggle hamburger/menu
   if (hamburger && navMenu) {
