@@ -48,16 +48,14 @@
           This link takes you to the sign-up form below.
         </p> -->
 
-        <a href="form.html">
-          <button aria-label="Join the book club">
+        <a class="button" href="form.html">
             Join the book club!
-          </button>
         </a>      
 
       </div>
     </section>
 
-    <main id="main-content">
+    <main class="card.grid" id="main-content">
       <!-- about section -->
       <section class="about card">
         <h2 id="about-me">About</h2>
@@ -84,94 +82,97 @@
           doloribus ipsum!
         </p>
       </section>
+      
+      <section class="card">
+        <div class="members-section" id="member">
+          <h2 class="section-title">Members</h2>
+          <p class="section-subtitle">Everyone's favourite book</p>
+        </div>
 
-      <section class="members-section card" id="member">
-        <h2 class="section-title">Members</h2>
-        <p class="section-subtitle">Everyone's favourite book</p>
+        <div class="members-list">
+          <!-- Member 1: Elvis -->
+          <article
+            class="member-card"
+            tabindex="0"
+            role="button"
+            aria-label="Member card for Elvis">
+            <header class="member-header">
+              <img
+                src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
+                alt="Profilbild av Elvis"
+                class="member-avatar" />
+              <div
+                class="member-info"
+                role="group"
+                aria-labelledby="member-name-1">
+                <h3 id="member-name-1" class="members-name">Elvis</h3>
+                <p class="member-status">Favourite Book</p>
+              </div>
+            </header>
+          </article>
+          <!-- Member 2: Mikaela -->
+          <article
+            class="member-card"
+            tabindex="0"
+            role="button"
+            aria-label="Member card for Mikaela">
+            <header class="member-header">
+              <img
+                src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
+                alt="Profilbild av Mikaela"
+                class="member-avatar" />
+              <div
+                class="member-info"
+                role="group"
+                aria-labelledby="member-name-2">
+                <h3 id="member-name-2" class="members-name">Mikaela</h3>
+                <p class="member-status">Favourite Book</p>
+              </div>
+            </header>
+          </article>
+          <!-- Member 3: Rebecca -->
+          <article
+            class="member-card"
+            tabindex="0"
+            role="button"
+            aria-label="Member card for Rebecca">
+            <header class="member-header">
+              <img
+                src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
+                alt="Profilbild av Rebecca"
+                class="member-avatar" />
+              <div
+                class="member-info"
+                role="group"
+                aria-labelledby="member-name-3">
+                <h3 id="member-name-3" class="members-name">Rebecca</h3>
+                <p class="member-status">Favourite Book</p>
+              </div>
+            </header>
+          </article>
+          <!-- Member 4: Asako -->
+          <article
+            class="member-card"
+            tabindex="0"
+            role="button"
+            aria-label="Member card for Asako">
+            <header class="member-header">
+              <img
+                src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
+                alt="Profilbild av Asako"
+                class="member-avatar" />
+              <div
+                class="member-info"
+                role="group"
+                aria-labelledby="member-name-4">
+                <h3 id="member-name-4" class="members-name">Asako</h3>
+                <p class="member-status">Favourite Book</p>
+              </div>
+            </header>
+          </article>
+        </div>
       </section>
 
-      <section class="members-list card">
-        <!-- Member 1: Elvis -->
-        <article
-          class="member-card"
-          tabindex="0"
-          role="button"
-          aria-label="Member card for Elvis">
-          <header class="member-header">
-            <img
-              src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-              alt="Profilbild av Elvis"
-              class="member-avatar" />
-            <div
-              class="member-info"
-              role="group"
-              aria-labelledby="member-name-1">
-              <h3 id="member-name-1" class="members-name">Elvis</h3>
-              <!-- <p class="member-status">Favourite Book</p> -->
-            </div>
-          </header>
-        </article>
-        <!-- Member 2: Mikaela -->
-        <article
-          class="member-card"
-          tabindex="0"
-          role="button"
-          aria-label="Member card for Mikaela">
-          <header class="member-header">
-            <img
-              src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-              alt="Profilbild av Mikaela"
-              class="member-avatar" />
-            <div
-              class="member-info"
-              role="group"
-              aria-labelledby="member-name-2">
-              <h3 id="member-name-2" class="members-name">Mikaela</h3>
-              <!-- <p class="member-status">Favourite Book</p> -->
-            </div>
-          </header>
-        </article>
-        <!-- Member 3: Rebecca -->
-        <article
-          class="member-card"
-          tabindex="0"
-          role="button"
-          aria-label="Member card for Rebecca">
-          <header class="member-header">
-            <img
-              src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-              alt="Profilbild av Rebecca"
-              class="member-avatar" />
-            <div
-              class="member-info"
-              role="group"
-              aria-labelledby="member-name-3">
-              <h3 id="member-name-3" class="members-name">Rebecca</h3>
-              <!-- <p class="member-status">Favourite Book</p> -->
-            </div>
-          </header>
-        </article>
-        <!-- Member 4: Asako -->
-        <article
-          class="member-card"
-          tabindex="0"
-          role="button"
-          aria-label="Member card for Asako">
-          <header class="member-header">
-            <img
-              src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-              alt="Profilbild av Asako"
-              class="member-avatar" />
-            <div
-              class="member-info"
-              role="group"
-              aria-labelledby="member-name-4">
-              <h3 id="member-name-4" class="members-name">Asako</h3>
-              <!-- <p class="member-status">Favourite Book</p -->
-            </div>
-          </header>
-        </article>
-      </section>
 
        <section id="join" class="join-section card" aria-labelledby="join-heading">
         <header>
@@ -181,10 +182,8 @@
             season a little warmer with books?
           </p>
         </header>
-        <a href="form.html">
-          <button aria-label="Join the book club">
-            Join us!
-          </button>
+        <a class="button" href="form.html">
+          Join us!
         </a> 
       </section>
     </main>
