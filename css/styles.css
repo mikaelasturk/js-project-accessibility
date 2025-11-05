@@ -380,6 +380,7 @@ footer {
   align-items: center;
   background-color: var(--heading-color);
   color: var(--bg-color);
+  padding-top: 12px;
 }
 
 footer p {
