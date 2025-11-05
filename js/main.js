@@ -45,20 +45,24 @@ document.querySelectorAll(".nav-links").forEach((n) =>
 (() => {
   const form = document.getElementById("user-info-form");
   const genreQ = document.getElementById("checkboxAlternatives");
-  const checkboxes = genreQ.querySelectorAll(
-    'input[type="checkbox"][name="genre"]'
-  );
-  const error = document.getElementById("error");
+  
+  // Only run if elements exist
+  if (form && genreQ) {
+    const checkboxes = genreQ.querySelectorAll(
+      'input[type="checkbox"][name="genre"]'
+    );
+    const error = document.getElementById("error");
 
-  form.addEventListener("submit", (e) => {
-    const checkedCount = [...checkboxes].filter((box) => box.checked).length;
-    if (checkedCount < 2) {
-      e.preventDefault();
-      error.textContent = "Please select at least two options.";
-    } else {
-      error.textContent = "";
-    }
-  });
+    form.addEventListener("submit", (e) => {
+      const checkedCount = [...checkboxes].filter((box) => box.checked).length;
+      if (checkedCount < 2) {
+        e.preventDefault();
+        error.textContent = "Please select at least two options.";
+      } else {
+        error.textContent = "";
+      }
+    });
+  }
 })();
 
 //checks to see if the user made a selection (then save in local storage)
@@ -74,19 +78,14 @@ if (reducedMotion) {
 
 //The toggle function
 motionToggle.addEventListener("click", () => {
-  console.log('Toggle clicked!'); //checking
   
   body.classList.toggle("reduce-motion"); 
-  
-  console.log('Classes after toggle:', document.body.className); //checking
 
   //saving the user choice in the local storage
   const isReduced = body.classList.contains("reduce-motion");
-  console.log('Is reduced:', isReduced); //checking
   
   localStorage.setItem("reducedMotion", isReduced.toString());
 
   //Uppdating the button text
   motionToggle.textContent = isReduced ? "Enable Animations" : "Disable Animations";
-  console.log('Button text:', motionToggle.textContent); //checking
 });
