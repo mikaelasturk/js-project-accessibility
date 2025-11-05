@@ -67,17 +67,26 @@ const reducedMotion = localStorage.getItem("reducedMotion") === "true";
 //the user clicks on disable animations
 if (reducedMotion) {
   body.classList.add("reduce-motion");
+  motionToggle.textContent = "Enable Animations";
+} else {
+  motionToggle.textContent = "Disable Animations";
 }
 
 //The toggle function
 motionToggle.addEventListener("click", () => {
-
-  body.classList.toggle("reduce-motion");
+  console.log('Toggle clicked!'); //checking
+  
+  body.classList.toggle("reduce-motion"); 
+  
+  console.log('Classes after toggle:', document.body.className); //checking
 
   //saving the user choice in the local storage
   const isReduced = body.classList.contains("reduce-motion");
-  localStorage.setItem("reducedMotion", isReduced);
+  console.log('Is reduced:', isReduced); //checking
+  
+  localStorage.setItem("reducedMotion", isReduced.toString());
 
   //Uppdating the button text
-  motionToggle.textContent = isReduced ? "Enable Animations":"Disable Animations";
+  motionToggle.textContent = isReduced ? "Enable Animations" : "Disable Animations";
+  console.log('Button text:', motionToggle.textContent); //checking
 });
