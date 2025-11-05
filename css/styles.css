@@ -54,6 +54,32 @@ body {
   color: var(--text-color);
 }
 
+/* Manual toggle via button */
+body.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+body.reduce-motion .bar {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+body.reduce-motion .nav-menu {
+  transition: none !important;
+}
+
+body.reduce-motion .nav-links {
+  transition: none !important;
+}
+
+body.reduce-motion .member-card:hover,
+body.reduce-motion .member-card:focus {
+  transform: none;
+}
+
 :focus {
   outline: none;
 }
@@ -415,7 +441,6 @@ table {
 	text-align: center;
 }
 
-
  footer{
   display: flex;
   flex-direction: column;
@@ -444,6 +469,7 @@ footer p {
   display: none;
 }
 
+/* Automatic system preference */
 /* Reduce motion for users with motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
   * {

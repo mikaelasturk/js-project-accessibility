@@ -1,6 +1,8 @@
 // get access to the elements/hamburger and navmenu
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
+const motionToggle = document.getElementById("motion-toggle");
+const body = document.body;
 
 // add edventlistner to the hamburger, as soon as you click it we want to activate the class that is going to turn this into an X
 // and aslo the class that is going to show the menu, now when we click it appears and disappears
@@ -58,3 +60,24 @@ document.querySelectorAll(".nav-links").forEach((n) =>
     }
   });
 })();
+
+//checks to see if the user made a selection (then save in local storage)
+const reducedMotion = localStorage.getItem("reducedMotion") === "true";
+
+//the user clicks on disable animations
+if (reducedMotion) {
+  body.classList.add("reduce-motion");
+}
+
+//The toggle function
+motionToggle.addEventListener("click", () => {
+
+  body.classList.toggle("reduce-motion");
+
+  //saving the user choice in the local storage
+  const isReduced = body.classList.contains("reduce-motion");
+  localStorage.setItem("reducedMotion", isReduced);
+
+  //Uppdating the button text
+  motionToggle.textContent = isReduced ? "Enable Animations":"Disable Animations";
+});
