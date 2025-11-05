@@ -5,7 +5,7 @@ https://group-5-js-project-accessibility.netlify.app/
 
 A basic web server template focused on web accessibility practices.
 
-### Installation
+## Installation
 
 1. Fork this repository by clicking the "Fork" button at the top right of the GitHub repository page.
 

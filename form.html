@@ -7,12 +7,40 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
-      <nav>
-      <a href="index.html">Go to home page</a>
+
+     <header class="nav-header">
+      <!-- NavBar with logo and a list-->
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="#" class="nav-branding">Logo</a>
+
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-links">Home</a>
+          </li>
+        </ul>
+        <!-- Hamburger menu -->
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
       </nav>
     </header>
+
+    <!-- Hero section with aria-label -->
+    <section
+      class="hero"
+      id="hero-section"
+      role="region"
+      aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading" class="hero-title">Book Club</h1>
+        <p class="hero-subtitle">What are your favorite books?</p>
+      </div>
+    </section>
+    
     <main id="main-content">
       <section>
         <form class="card" id="user-info-form">
@@ -169,6 +197,31 @@
       </section>
     </main>
  
+    <footer>
+      <p>&copy; Book Club. All rights reserved.</p>
+      <p>Follow us on:</p>
+      <ul class="social-icons">
+        <li>
+          <a href="https://www.facebook.com/bookclub">
+            <span class="sr-only">facebook</span>
+            <img src="./images/facebook.png" alt="" class="icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/bookclub">
+            <span class="sr-only">instagram</span>
+            <img src="./images/instagram.png" alt="" class="icon" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.x.com/bookclub">
+            <span class="sr-only">x</span>
+            <img src="./images/x.png" alt="" class="icon" />
+          </a>
+        </li>
+      </ul>
+    </footer>
+
     <script src="js/main.js"></script>
   </body>
 </html>
