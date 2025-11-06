@@ -71,21 +71,20 @@ const reducedMotion = localStorage.getItem("reducedMotion") === "true";
 //the user clicks on disable animations
 if (reducedMotion) {
   body.classList.add("reduce-motion");
-  motionToggle.textContent = "Enable Animations";
+  motionToggle.checked = true;
 } else {
-  motionToggle.textContent = "Disable Animations";
+  motionToggle.checked = false;
 }
 
 //The toggle function
-motionToggle.addEventListener("click", () => {
+motionToggle.addEventListener("change", () => {
   
-  body.classList.toggle("reduce-motion"); 
+  if (motionToggle.checked) {
+    body.classList.add("reduce-motion");
+  } else {
+    body.classList.remove("reduce-motion");
+  }
 
   //saving the user choice in the local storage
-  const isReduced = body.classList.contains("reduce-motion");
-  
-  localStorage.setItem("reducedMotion", isReduced.toString());
-
-  //Uppdating the button text
-  motionToggle.textContent = isReduced ? "Enable Animations" : "Disable Animations";
+  localStorage.setItem("reducedMotion", motionToggle.checked.toString());
 });

@@ -80,6 +80,69 @@ body.reduce-motion .member-card:focus {
   transform: none;
 }
 
+/* Toggle Switch Styling */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggle-switch input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  width: 50px;
+  height: 24px;
+  background-color: var(--button-bg-color);
+  border-radius: 34px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+/* When checked (animations OFF) */
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--button-hover-bg-color);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(26px);
+}
+
+/* Focus styling */
+.toggle-switch input:focus-visible + .toggle-slider {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+.toggle-label {
+  color: white;
+  font-size: 14px;
+}
+
+/* Disable transition on toggle when reduce-motion is active */
+body.reduce-motion .toggle-slider,
+body.reduce-motion .toggle-slider::before {
+  transition: none !important;
+}
+
 :focus {
   outline: none;
 }
@@ -493,40 +556,5 @@ footer p {
   }
 }
 
-/* High contrast mode support, if the user has a high contrast setting activated */
-@media (prefers-contrast: high) {
 
-   * { /* removes shadows that are hard to see */
-    box-shadow: none !important;
-  }
-
-  body { /* makes the text more bold */
-    font-weight: 600;
-  }
-
-  button { /* increases the contrast between the colors */
-    border: 2px solid black;
-  }
-
-  a { /* more clear links */
-    text-decoration: underline;
-    font-weight: 600;
-  }
-
-  img { /* a more clear border on pictures */
-    border: 1px solid var(--text-color);
-  }
-
-  .card { /* removes the shadows that are hard to see */
-    box-shadow: none;
-    border: 2px solid currentColor;
-  }
-
-  .member-card {
-    border: 2px solid var(--text-color); /* visible border */
-  }
-  
-  .member-card:focus {
-    border: 3px solid var(--secondary-color); /* Even more clear with focus */
-  }
-}
+ 
