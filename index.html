@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>READiculus</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
@@ -28,7 +28,13 @@
           </li>
         </ul>
         <!-- Hamburger menu -->
-        <div class="hamburger">
+        <div 
+          class="hamburger" 
+          aria-label="Menu" 
+          aria-expanded="false" 
+          role="button" 
+          tabindex="0"
+        >
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -44,16 +50,23 @@
       aria-labelledby="hero-heading">
       <div class="hero-content">
         <h1 id="hero-heading" class="hero-title">Book Club</h1>
-        <p class="hero-subtitle">What are your favorite books?</p>
+        <h2 class="hero-subtitle">What are your favorite books?</h2>
 
         <!-- Hidden description for screen readers
         <p id="hero-cta-desc" class="visually-hidden">
           This link takes you to the sign-up form below.
         </p> -->
 
-        <a class="button" href="form.html">
+        <!-- <a href="form.html">
+          <button aria-label="Join the book club">
             Join the book club!
-        </a>      
+          </button>
+        </a>       -->
+        <button 
+          class="join-us-button"
+          aria-label="Join the book club">
+            Join the book club!
+        </button>
 
       </div>
     </section>
@@ -132,13 +145,11 @@
           <!-- Member 1: Elvis -->
           <article
             class="member-card"
-            tabindex="0"
-            role="button"
             aria-label="Member card for Elvis">
             <header class="member-header">
               <img
                 src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-                alt="Profilbild av Elvis"
+                alt="Profile picture of Elvis"
                 class="member-avatar" />
               <div
                 class="member-info"
@@ -152,13 +163,11 @@
           <!-- Member 2: Mikaela -->
           <article
             class="member-card"
-            tabindex="0"
-            role="button"
             aria-label="Member card for Mikaela">
             <header class="member-header">
               <img
                 src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-                alt="Profilbild av Mikaela"
+                alt="Profile picture of Mikaela"
                 class="member-avatar" />
               <div
                 class="member-info"
@@ -172,13 +181,11 @@
           <!-- Member 3: Rebecca -->
           <article
             class="member-card"
-            tabindex="0"
-            role="button"
             aria-label="Member card for Rebecca">
             <header class="member-header">
               <img
                 src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-                alt="Profilbild av Rebecca"
+                alt="Profile picture of Rebecca"
                 class="member-avatar" />
               <div
                 class="member-info"
@@ -192,13 +199,11 @@
           <!-- Member 4: Asako -->
           <article
             class="member-card"
-            tabindex="0"
-            role="button"
             aria-label="Member card for Asako">
             <header class="member-header">
               <img
                 src="images/0edbac4a-e2c3-4d04-a382-fc3f26962fa7.avif"
-                alt="Profilbild av Asako"
+                alt="Profile picture of Asako"
                 class="member-avatar" />
               <div
                 class="member-info"
@@ -213,7 +218,7 @@
       </section>
 
 
-       <section id="join" class="join-section card" aria-labelledby="join-heading">
+      <section id="join" class="join-section card" aria-labelledby="join-heading">
         <header>
           <h2 id="join-heading">Join our cozy circle</h2>
           <p>
@@ -221,9 +226,11 @@
             season a little warmer with books?
           </p>
         </header>
-        <a class="button" href="form.html">
+        <button 
+          class="join-us-button"
+          aria-label="Join the book club">
           Join us!
-        </a> 
+        </button>
       </section>
     </main>
     <footer>
@@ -243,8 +250,8 @@
           </a>
         </li>
         <li>
-          <a href="https://www.x.com/bookclub">
-            <span class="sr-only">x</span>
+          <a href="https://www.x.com/bookclub" aria-label="X">
+            <span class="sr-only">X</span>
             <img src="./images/x.png" alt="" class="icon" />
           </a>
         </li>
