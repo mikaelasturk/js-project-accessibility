@@ -585,6 +585,7 @@ input {
   /* When we active the menu class we want to display menu, we activate with javascript */
   .nav-menu.active {
     left: 0;
+    display: flex;
   }
 }
 

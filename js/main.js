@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => 
   // get access to the elements/hamburger and navmenu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
