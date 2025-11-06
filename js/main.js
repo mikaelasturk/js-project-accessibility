@@ -2,11 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // get access to the elements/hamburger and navmenu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
-  const linkButton = document.querySelector(".button");
+  const linkButton = document.querySelectorAll(".button");
 
-  // move to form on button click
-  linkButton.addEventListener("click", () => {
-    window.location.href = "form.html";
+  linkButton.forEach((button) => {
+    button.addEventListener("click", () => {
+      window.location.href = "form.html";
+    });
   });
 
   // toggle hamburger/menu
