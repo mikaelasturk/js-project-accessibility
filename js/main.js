@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // get access to the elements/hamburger and navmenu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
-  const linkButton = document.querySelectorAll(".button");
   const motionToggle = document.getElementById("motion-toggle");
   const body = document.body;
 
-  linkButton.forEach((button) => {
-    button.addEventListener("click", () => {
-      window.location.href = "form.html";
-    });
+  const heroButtons = document.querySelectorAll(".button:not(.modal-button)");
+  heroButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    window.location.href = "form.html";
   });
+});
 
   // toggle hamburger/menu
   if (hamburger && navMenu) {
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const openDialog = document.querySelectorAll(".modal-button");
   const closeDialog = document.getElementById("close-modal");
 
+  if (dialog && closeDialog && openDialog.length > 0) {
   openDialog.forEach((button) => {
     button.addEventListener("click", () => {
       dialog.showModal();
@@ -108,29 +109,27 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove("modal-open");
     }
   });
+}
 
 
-  //checks to see if the user made a previous selection (then save in local storage)
-  const reducedMotion = localStorage.getItem("reducedMotion") === "true";
-
-  //the user clicks on disable animations
-  if (reducedMotion) {
-    body.classList.add("reduce-motion");
-    motionToggle.checked = true;
-  } else {
+  //Toggle always starts OFF when page loads
+  if (motionToggle) {
+    // Always start with toggle OFF
     motionToggle.checked = false;
+    body.classList.remove("reduce-motion");
+
+    //The toggle function - when user clicks
+    motionToggle.addEventListener("change", () => {
+      
+      if (motionToggle.checked) {
+        body.classList.add("reduce-motion");
+      } else {
+        body.classList.remove("reduce-motion");
+      }
+
+      //saving the user choice in the local storage
+      localStorage.setItem("reducedMotion", motionToggle.checked.toString());
+    });
   }
-
-  //The toggle function
-  motionToggle.addEventListener("change", () => {
-    
-    if (motionToggle.checked) {
-      body.classList.add("reduce-motion");
-    } else {
-      body.classList.remove("reduce-motion");
-    }
-
-    //saving the user choice in the local storage
-    localStorage.setItem("reducedMotion", motionToggle.checked.toString());
-  });
 });
+

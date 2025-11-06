@@ -142,7 +142,7 @@ body.reduce-motion .member-card:focus {
   background-color: var(--button-hover-bg-color);
 }
 
-.toggle-switch input:checked + .toggle-slider::before {
+.toggle-switch input:checked ~ .toggle-slider::before {
   transform: translateX(26px);
 }
 
@@ -153,15 +153,15 @@ body.reduce-motion .member-card:focus {
 }
 
 .toggle-label {
-  color: white;
-  font-size: 14px;
+  color: var(--link-bg-color);
+  font-size: 16px;
 }
 
 /* Disable transition on toggle when reduce-motion is active */
-body.reduce-motion .toggle-slider,
+/* body.reduce-motion .toggle-slider,
 body.reduce-motion .toggle-slider::before {
   transition: none !important;
-}
+} */
 
 :focus {
   outline: none;
@@ -216,7 +216,7 @@ body.reduce-motion .toggle-slider::before {
 .nav-bar {
   min-height: 70px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly; 
   align-items: center;
   padding: 10px 1rem;
 }
@@ -226,7 +226,7 @@ body.reduce-motion .toggle-slider::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 60px;
+  gap: 50px;
 }
 
 /* make the brand/logo bigger */
@@ -393,6 +393,10 @@ h2 {
   margin-bottom: 16px;
 }
 
+.about-text  {
+  text-align: center;
+}
+
 /* Card-section */
 dialog {
   position: fixed;
@@ -489,7 +493,7 @@ body.modal-open {
 }
 
 .members-name {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -572,9 +576,6 @@ input {
 
 /* adding media query at 768px when to show Hamburger menu, at this point we want to display, so we use display: block */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
 
   /* we need to creat animation for menu to turn to an X. activate in js */
   .hamburger.active .bar:nth-child(2) {
@@ -589,6 +590,34 @@ input {
     transform: translateY(-8px) rotate(-45deg);
   }
 
+    /* Position toggle next to hamburger */
+  .nav-item:has(.toggle-switch) {
+    position: fixed !important;
+    right: 70px;
+    top: 23px;
+    z-index: 1000;
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  .nav-bar {
+    justify-content: space-between;
+  }
+  
+  .nav-controls {
+    display: flex;
+    gap: 15px; /* Avstånd mellan toggle och hamburger */
+    align-items: center;
+  }
+  
+  .toggle-wrapper {
+    position: static;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
   /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
   .nav-menu {
     display: none;
@@ -613,6 +642,26 @@ input {
     left: 0;
     display: flex;
   }
+
+    /* Make toggle smaller on mobile */
+  .toggle-slider {
+    width: 40px;
+    height: 20px;
+  }
+
+  .toggle-slider::before {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .toggle-switch input:checked ~ .toggle-slider::before {
+    transform: translateX(20px);
+  }
+  
+  .toggle-label {
+    display: none; /* Hide "Animations" text on mobile */
+  }
+  
 }
 
 /*Tablet responsive design*/
