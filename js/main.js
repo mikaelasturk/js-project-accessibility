@@ -1,71 +1,114 @@
-// get access to the elements/hamburger and navmenu
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-const motionToggle = document.getElementById("motion-toggle");
-const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+  // get access to the elements/hamburger and navmenu
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+  const linkButton = document.querySelector(".button");
+  const motionToggle = document.getElementById("motion-toggle");
+  const body = document.body;
 
-// add edventlistner to the hamburger, as soon as you click it we want to activate the class that is going to turn this into an X
-// and aslo the class that is going to show the menu, now when we click it appears and disappears
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navMenu.classList.toggle("active");
-});
+  // move to form on button click
+  linkButton.addEventListener("click", () => {
+    window.location.href = "form.html";
+  });
 
-// when we click on the links the menu should disappears or the menu closes
-// we do for each link we add an addEventListener, we remove class from hamburger and for navmenu
+  // toggle hamburger/menu
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+  }
 
-document.querySelectorAll(".nav-links").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-  })
-);
+  // close menu on link click
+  document.querySelectorAll(".nav-links, .nav-menu a").forEach((n) =>
+    n.addEventListener("click", () => {
+      if (hamburger) hamburger.classList.remove("active");
+      if (navMenu) navMenu.classList.remove("active");
+    })
+  );
 
-// Makes the focus styling only apply when using tab-blabla
-(() => {
-  const onFirstTab = (e) => {
-    if (e.key === "Tab") {
-      document.body.classList.add("tab-user");
-      window.removeEventListener("keydown", onFirstTab);
-      window.addEventListener("mousedown", onMouseClick);
-    }
-  };
+  // Makes the focus styling only apply when using keybord navigation
+  const tabOrClick = () => {
+    const onFirstTab = (e) => {
+      if (e.key === "Tab") {
+        document.body.classList.add("tab-user");
+        window.removeEventListener("keydown", onFirstTab);
+        window.addEventListener("mousedown", onMouseClick);
+      }
+    };
 
-  const onMouseClick = () => {
-    document.body.classList.remove("tab-user");
-    window.removeEventListener("mousedown", onMouseClick);
+    const onMouseClick = () => {
+      document.body.classList.remove("tab-user");
+      window.removeEventListener("mousedown", onMouseClick);
+      window.addEventListener("keydown", onFirstTab);
+    };
+
     window.addEventListener("keydown", onFirstTab);
   };
 
-  window.addEventListener("keydown", onFirstTab);
-})();
+  // Makes checkbox 2-minimum active
+  // Make sure errormessage is alerted loud
+  const minimumTwoGenreOptions = () => {
+    const form = document.getElementById("user-info-form");
+    const genreQ = document.getElementById("checkboxAlternatives");
+    const error = document.getElementById("error");
 
-// Makes checkbox 2-minimum active
-// Make sure errormessage is alerted loud
-(() => {
-  const form = document.getElementById("user-info-form");
-  const genreQ = document.getElementById("checkboxAlternatives");
-  
-  // Only run if elements exist
-  if (form && genreQ) {
+    if (!form || !genreQ) return;
+
+    if (error) error.setAttribute("role", "alert");
+
     const checkboxes = genreQ.querySelectorAll(
       'input[type="checkbox"][name="genre"]'
     );
-    const error = document.getElementById("error");
+    if (!checkboxes || !checkboxes.length) return;
 
     form.addEventListener("submit", (e) => {
       const checkedCount = [...checkboxes].filter((box) => box.checked).length;
       if (checkedCount < 2) {
         e.preventDefault();
-        error.textContent = "Please select at least two options.";
+        if (error) error.textContent = "Please select at least two options.";
       } else {
-        error.textContent = "";
+        if (error) error.textContent = "";
       }
     });
-  }
-})();
+  };
 
-//checks to see if the user made a selection (then save in local storage)
+  tabOrClick();
+  minimumTwoGenreOptions();
+
+  // Modal dialog functionality
+
+  const dialog = document.getElementById("modal");
+  const openDialog = document.querySelectorAll(".modal-button");
+  const closeDialog = document.getElementById("close-modal");
+
+  openDialog.forEach((button) => {
+    button.addEventListener("click", () => {
+      dialog.showModal();
+      document.body.classList.add("modal-open");
+    });
+  });
+
+  closeDialog.addEventListener("click", () => {
+    dialog.close();
+    document.body.classList.remove("modal-open");
+  });
+
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+      document.body.classList.remove("modal-open");
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && dialog.open) {
+      dialog.close();
+      document.body.classList.remove("modal-open");
+    }
+  });
+
+//checks to see if the user made a previous selection (then save in local storage)
 const reducedMotion = localStorage.getItem("reducedMotion") === "true";
 
 //the user clicks on disable animations
@@ -87,4 +130,5 @@ motionToggle.addEventListener("change", () => {
 
   //saving the user choice in the local storage
   localStorage.setItem("reducedMotion", motionToggle.checked.toString());
+});
 });

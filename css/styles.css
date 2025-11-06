@@ -261,6 +261,34 @@ a {
 
 /* adding media query at 768px when to show Hamburger menu, at this point we want to display, so we use display: block */
 @media (max-width: 768px) {
+  
+  /* Position toggle next to hamburger - fixed position relative to nav-bar */
+  .nav-item:has(.toggle-switch) {
+    position: fixed;
+    right: 70px;
+    top: 10px;
+    z-index: 1000;
+  }
+  
+  /* Make toggle smaller on mobile */
+  .toggle-slider {
+    width: 40px;
+    height: 20px;
+  }
+  
+  .toggle-slider::before {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(20px);
+  }
+  
+  .toggle-label {
+    display: none; /* Hide "Animations" text on mobile */
+  }
+  
   .hamburger {
     display: block;
   }
@@ -298,6 +326,7 @@ a {
   .nav-menu.active {
     left: 0;
   }
+  
 }
 
 main {
@@ -557,4 +586,4 @@ footer p {
 }
 
 
- 
+
