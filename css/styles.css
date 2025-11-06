@@ -76,6 +76,99 @@ body {
   color: var(--text-color);
 }
 
+/* Manual toggle via button */
+body.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+body.reduce-motion .bar {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+body.reduce-motion .nav-menu {
+  transition: none !important;
+}
+
+body.reduce-motion .nav-links {
+  transition: none !important;
+}
+
+body.reduce-motion .member-card:hover,
+body.reduce-motion .member-card:focus {
+  transform: none;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggle-switch input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  width: 50px;
+  height: 24px;
+  background-color: var(--button-bg-color);
+  border-radius: 34px;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+/* When checked (animations OFF) */
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--button-hover-bg-color);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(26px);
+}
+
+/* Focus styling */
+.toggle-switch input:focus-visible + .toggle-slider {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+.toggle-label {
+  color: white;
+  font-size: 14px;
+}
+
+/* Disable transition on toggle when reduce-motion is active */
+body.reduce-motion .toggle-slider,
+body.reduce-motion .toggle-slider::before {
+  transition: none !important;
+}
+
+:focus {
+  outline: none;
+}
+
 .tab-user :focus-visible {
   /*Viktigt med mellanslaget: förkl. från Gepete: Med mellanslag säger jag "alla element inuti ska få detta"*/
   outline: var(--focus-outline);
@@ -608,16 +701,26 @@ input {
   }
 } */
 
+/* Automatic system preference */
 /* Reduce motion for users with motion sensitivity */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important; /* shuts down all the animation */
+    animation-iteration-count: 1 !important; /* prevents repeated animations */
+    transition-duration: 0.01ms !important; /* speeds upp the transform effects */
+    scroll-behavior: auto !important; /* scrolling without animation, jumpes straight to the right position */
+  }
+  
+  .bar { /* removes the animation on the hamburger menu */
+    transition: none !important;
+  }
+
+  .nav-menu {
+    transition: none !important;
   }
 
   .member-card:hover,
-  .member-card:focus {
+  .member-card:focus { /* removes the transform completely */
     transform: none;
   }
 }

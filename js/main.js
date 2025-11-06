@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
   const linkButton = document.querySelector(".button");
+  const motionToggle = document.getElementById("motion-toggle");
+  const body = document.body;
 
   // move to form on button click
   linkButton.addEventListener("click", () => {
@@ -105,5 +107,29 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.remove("modal-open");
     }
   });
-});
 
+
+  //checks to see if the user made a previous selection (then save in local storage)
+  const reducedMotion = localStorage.getItem("reducedMotion") === "true";
+
+  //the user clicks on disable animations
+  if (reducedMotion) {
+    body.classList.add("reduce-motion");
+    motionToggle.checked = true;
+  } else {
+    motionToggle.checked = false;
+  }
+
+  //The toggle function
+  motionToggle.addEventListener("change", () => {
+    
+    if (motionToggle.checked) {
+      body.classList.add("reduce-motion");
+    } else {
+      body.classList.remove("reduce-motion");
+    }
+
+    //saving the user choice in the local storage
+    localStorage.setItem("reducedMotion", motionToggle.checked.toString());
+  });
+});
