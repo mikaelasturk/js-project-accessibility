@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => 
+document.addEventListener('DOMContentLoaded', () => {
   // get access to the elements/hamburger and navmenu
   const hamburger = document.querySelector(".hamburger");
   const navMenu = document.querySelector(".nav-menu");
-  const linkButton = document.querySelector(".join-us-button");
+  const linkButton = document.querySelector(".button");
 
   // move to form on button click
   linkButton.addEventListener("click", () => {
@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () =>
     })
   );
 
-  // Makes the focus styling only apply when using tab-blabla
-  const something = () => {
+  // Makes the focus styling only apply when using keybord navigation
+  const tabOrClick = () => {
     const onFirstTab = (e) => {
       if (e.key === "Tab") {
         document.body.classList.add("tab-user");
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () =>
 
   // Makes checkbox 2-minimum active
   // Make sure errormessage is alerted loud
-  const somethingElse = () => {
+  const minimumTwoGenreOptions = () => {
     const form = document.getElementById("user-info-form");
     const genreQ = document.getElementById("checkboxAlternatives");
     const error = document.getElementById("error");
@@ -71,50 +71,39 @@ document.addEventListener('DOMContentLoaded', () =>
     });
   };
 
-  something();
-  somethingElse();
+  tabOrClick();
+  minimumTwoGenreOptions();
 
   // Modal dialog functionality
 
-const dialog = document.getElementById("modal");
-const openDialog = document.querySelectorAll(".modal-button");
-const closeDialog = document.getElementById("close-modal");
+  const dialog = document.getElementById("modal");
+  const openDialog = document.querySelectorAll(".modal-button");
+  const closeDialog = document.getElementById("close-modal");
 
-openDialog.forEach((button) => {
-  button.addEventListener("click", () => {
-    dialog.showModal();
-    document.body.classList.add("modal-open");
+  openDialog.forEach((button) => {
+    button.addEventListener("click", () => {
+      dialog.showModal();
+      document.body.classList.add("modal-open");
+    });
   });
-});
 
-closeDialog.addEventListener("click", () => {
-  dialog.close();
-  document.body.classList.remove("modal-open");
-});
-
-dialog.addEventListener("click", (e) => {
-  if (e.target === dialog) {
+  closeDialog.addEventListener("click", () => {
     dialog.close();
     document.body.classList.remove("modal-open");
-  }
-});
+  });
 
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && dialog.open) {
-    dialog.close();
-    document.body.classList.remove("modal-open");
-  }
-});
-
-});
-  
-form.addEventListener("submit", (e) => {
-    const checkedCount = [...checkboxes].filter((box) => box.checked).length;
-    if (checkedCount < 2) {
-      e.preventDefault();
-      error.textContent = "Please select at least two options.";
-    } else {
-      error.textContent = "";
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      dialog.close();
+      document.body.classList.remove("modal-open");
     }
   });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && dialog.open) {
+      dialog.close();
+      document.body.classList.remove("modal-open");
+    }
+  });
+});
 
