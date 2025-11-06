@@ -210,6 +210,7 @@ button, .button {
 button, .button:hover {
   background-color: var(--button-hover-bg-color);
 }
+
 /* .hero-btn {
   padding: 0.75rem 1.5rem;
   border: none;
@@ -223,9 +224,8 @@ button, .button:hover {
 .hero-btn:hover {
   font-size: 1rem;
   background: #2d4965;
-} */
+}
 
-/* 
 .visually-hidden {
   position: absolute !important;
   width: 1px;
