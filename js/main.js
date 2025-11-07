@@ -12,50 +12,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
- // toggle hamburger/menu
-  if (hamburger && navMenu) {
-    const toggleMenu = () => {
-      const isExpanded = hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
-      // Update aria-expanded for screen readers
-      hamburger.setAttribute("aria-expanded", isExpanded);
+ // --- Hamburger toggle (mus + Enter + Space) ---
+if (hamburger && navMenu) {
+  // rekommenderat: koppla ARIA
+  if (!navMenu.id) navMenu.id = 'primary-menu';
+  hamburger.setAttribute('aria-controls', navMenu.id);
 
-      // FOCUS MANAGEMENT: Move focus when menu opens/closes
-      if (isExpanded) {
-        // Menu just opened - move focus to first link
-        const firstLink = navMenu.querySelector('.nav-links');
-        if (firstLink) {
-          // Small delay to ensure menu is visible
-          setTimeout(() => firstLink.focus(), 50);
-        }
-      } else {
-        // Menu just closed - move focus back to hamburger
-        hamburger.focus();
-      }
-    };
+  const toggleMenu = () => {
+    const isActive = hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  };
 
-    // Click support
-    hamburger.addEventListener("click", toggleMenu);
+  // Mus
+  hamburger.addEventListener('click', toggleMenu);
 
-    // Keyboard support (Enter and Space)
-    hamburger.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault(); // Prevent page scroll on Space
-        toggleMenu();
-      }
-      // Escape key to close menu
-      if (e.key === "Escape" && hamburger.classList.contains("active")) {
-        toggleMenu();
-      }
-    });
+  // Tangentbord: Enter på keydown, Space på keyup (WAI-ARIA praxis)
+  hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
 
-    // Close menu with Escape key (works from anywhere when menu is open)
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && navMenu.classList.contains("active")) {
-        toggleMenu();
-      }
-    });
-  }
+  hamburger.addEventListener('keyup', (e) => {
+    // Space kan rapporteras som ' ' eller 'Spacebar'; code är stabilt
+    if (e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+}
 
   // close menu on link click
   document.querySelectorAll(".nav-links, .nav-menu a").forEach((n) =>

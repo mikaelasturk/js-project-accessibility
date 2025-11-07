@@ -52,36 +52,46 @@
     </section>
     
     <main id="main-content">
-      <section>
+      <section class="center">
         <form class="card" id="user-info-form">
           <h2>Join our book club!</h2>
           <div class="form-control">
             <label for="first-name">First name:</label>
-            <input type="text" 
+            <input 
+            type="text" 
             id="first-name" name="name" 
             placeholder="Name"
             required 
             aria-required="true"
+            aria-describedby="first-name-error"
             />
+            <div id="first-name-error" class="error" role="alert" hidden></div>
           </div>
+          
           <div class="form-control">
             <label for="last-name">Last name:</label>
-            <input type="text" 
-            id="last-name" name="name" 
+            <input 
+            type="text" 
+            id="last-name" 
+            name="name" 
             placeholder="Namerson"
             required 
             aria-required="true"
             />
+            <div id="last-name-error" class="error" role="alert" hidden></div>
           </div>
+          
           <div class="form-control">
             <label for="tel">Mobile number:</label>
             <input 
             type="tel" 
             id="tel" 
             name="tel" 
-            pattern="^07\\d{8}$"
+            pattern="^(?:0?7[\s-]?\d{2}[\s-]?\d{3}[\s-]?\d{2}$|\+?46[\s-]?7[\s-]?\d{2}[\s-]?\d{3}[\s-]?\d{2}$)"
             placeholder="070 - 123 45 67"
+            aria-describedby="tel-error"
             />
+            <div id="tel-error" class="error" role="alert" hidden></div>
           </div>
           <div class="form-control">
             <label for="place">City:</label>
@@ -92,7 +102,9 @@
             placeholder="Stockholm"
             required 
             aria-required="true"
+            aria-describedby="city-error"
             />
+            <div id="city-error" class="error" role="alert" hidden></div>
           </div>
           <div class="form-control">
             <label for="email">Email:</label>
@@ -102,11 +114,13 @@
             name="email" 
             required 
             aria-required="true"
+            aria-describedby="email-error"
             />
+            <div id="email-error" class="error" role="alert" hidden></div>
           </div>
           <fieldset>
             <legend>
-              Do you prefer blabla?
+              Do you prefer...?
             </legend>
             <input 
               type="radio" 
@@ -114,14 +128,14 @@
               id="bla1" 
               value="bla1"
             />
-            <label for="bla1"> bla</label>
+            <label for="bla1">This</label>
             <input 
               type="radio" 
               name="pref" 
               id="bla2" 
               value="bla2"
             />
-            <label for="bla2">bla</label>
+            <label for="bla2">Or this</label>
           </fieldset>
           <!-- Detta har inte bra accessibility! Vad menade jag ens med denna kommentar? -->
           <fieldset>
@@ -205,6 +219,10 @@
           </div>
         </form>
       </section>
+      <section id="results" hidden>
+        <h2>Thank you for joining!</h2>
+        <div id="results-content"></div>
+      </section>
     </main>
  
     <footer>
@@ -233,6 +251,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
   </body>
 </html>
 

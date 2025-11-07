@@ -682,21 +682,21 @@ input {
   .toggle-label {
     display: none; /* Hide "Animations" text on mobile */
   }
-  
 }
 
 /*Tablet responsive design*/
 @media (min-width: 667px) {
 
-  main { 
+ .card-grid { 
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 16px;
+    margin: 0 auto;
   }
 
-  form{
-    margin:0 auto;
-    max-width: 560px;
+  .center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
 }
