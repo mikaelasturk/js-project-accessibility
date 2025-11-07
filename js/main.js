@@ -12,13 +12,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-  // toggle hamburger/menu
-  if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navMenu.classList.toggle("active");
-    });
-  }
+ // --- Hamburger toggle (mus + Enter + Space) ---
+if (hamburger && navMenu) {
+  // rekommenderat: koppla ARIA
+  if (!navMenu.id) navMenu.id = 'primary-menu';
+  hamburger.setAttribute('aria-controls', navMenu.id);
+
+  const toggleMenu = () => {
+    const isActive = hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  };
+
+  // Mus
+  hamburger.addEventListener('click', toggleMenu);
+
+  // Tangentbord: Enter på keydown, Space på keyup (WAI-ARIA praxis)
+  hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+
+  hamburger.addEventListener('keyup', (e) => {
+    // Space kan rapporteras som ' ' eller 'Spacebar'; code är stabilt
+    if (e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+}
 
   // close menu on link click
   document.querySelectorAll(".nav-links, .nav-menu a").forEach((n) =>
