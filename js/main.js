@@ -12,11 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-  // toggle hamburger/menu
+ // toggle hamburger/menu
   if (hamburger && navMenu) {
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
+    const toggleMenu = () => {
+      const isExpanded = hamburger.classList.toggle("active");
       navMenu.classList.toggle("active");
+      // Update aria-expanded for screen readers
+      hamburger.setAttribute("aria-expanded", isExpanded);
+    };
+
+    // Click support
+    hamburger.addEventListener("click", toggleMenu);
+
+    // Keyboard support (Enter and Space)
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault(); // Prevent page scroll on Space
+        toggleMenu();
+      }
     });
   }
 

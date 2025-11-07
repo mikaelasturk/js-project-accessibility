@@ -146,10 +146,16 @@ body.reduce-motion .member-card:focus {
   transform: translateX(26px);
 }
 
-/* Focus styling */
-.toggle-switch input:focus-visible + .toggle-slider {
-  outline: 2px solid var(--focus-outline-color);
-  outline-offset: 2px;
+/* Focus styling - Using ~ selector to reach .toggle-slider */
+.toggle-switch input:focus-visible ~ .toggle-slider {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(0, 95, 204, 0.2);
+}
+
+/* Hover state for better interactivity feedback */
+.toggle-switch:hover .toggle-slider {
+  opacity: 0.9;
 }
 
 .toggle-label {
@@ -616,6 +622,17 @@ input {
   
   .hamburger {
     display: block;
+  }
+
+  /* Hamburger focus styling for keyboard navigation */
+  .hamburger:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .hamburger:focus-visible .bar {
+    background-color: var(--button-hover-bg-color);
   }
   
   /* create setting for dropdown, position: fixed for ensure that when we scroll down the menu remains on the screen; */
