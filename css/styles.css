@@ -688,15 +688,15 @@ input {
 /*Tablet responsive design*/
 @media (min-width: 667px) {
 
- main { 
+  main { 
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 16px;
   }
 
   form{
-     margin:0 auto;
-     max-width: 560px;
+    margin:0 auto;
+    max-width: 560px;
   }
 
 }
