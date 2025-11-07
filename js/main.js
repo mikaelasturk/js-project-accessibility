@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
       navMenu.classList.toggle("active");
       // Update aria-expanded for screen readers
       hamburger.setAttribute("aria-expanded", isExpanded);
+
+      // FOCUS MANAGEMENT: Move focus when menu opens/closes
+      if (isExpanded) {
+        // Menu just opened - move focus to first link
+        const firstLink = navMenu.querySelector('.nav-links');
+        if (firstLink) {
+          // Small delay to ensure menu is visible
+          setTimeout(() => firstLink.focus(), 50);
+        }
+      } else {
+        // Menu just closed - move focus back to hamburger
+        hamburger.focus();
+      }
     };
 
     // Click support
@@ -28,6 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault(); // Prevent page scroll on Space
+        toggleMenu();
+      }
+      // Escape key to close menu
+      if (e.key === "Escape" && hamburger.classList.contains("active")) {
+        toggleMenu();
+      }
+    });
+
+    // Close menu with Escape key (works from anywhere when menu is open)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && navMenu.classList.contains("active")) {
         toggleMenu();
       }
     });
@@ -101,12 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener("click", () => {
       dialog.showModal();
       document.body.classList.add("modal-open");
+      // När modal öppnas
+      const closeButton = dialog.querySelector('.close-modal');
+      closeButton.focus(); // Move focus to the closeButton 
     });
   });
 
   closeDialog.addEventListener("click", () => {
     dialog.close();
     document.body.classList.remove("modal-open");
+    // When modal closes 
+    button.focus(); // Move focus back to the button that opened it 
   });
 
   dialog.addEventListener("click", (e) => {
